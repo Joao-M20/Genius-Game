@@ -4,8 +4,8 @@ let score = 0;
 
 // 0 = verde
 // 1 = vermelho
-// 2 = amarelo 
-// 3 = azul 
+// 2 = amarelo
+// 3 = azul
 
 // Seleciona os elementos HTML a partir das classes(div)
 const blue = document.querySelector('.blue');
@@ -17,7 +17,7 @@ let shuffleOrder = () => {
     // gera um numero de 0 a 3
     let colorOrder = Math.floor(Math.random() * 4);
 
-    //Adiciona o numero ao proximo da ordem 
+    //Adiciona o numero ao proximo da ordem
     order[order.length] = colorOrder;
     clickedOrder = [];
 
@@ -44,6 +44,9 @@ let lightColor = (element, number) => {
 let checkorder = () => {
     for(let i in clickedOrder) {
         if (clickedOrder[i] != order[i]){
+          let err = document.querySelector('body');
+
+          err.classList.add('err');
             gameover();
             break;
         }
@@ -59,7 +62,7 @@ let checkorder = () => {
 let click = (color) => {
     clickedOrder[clickedOrder.length] = color;
     createColorElement(color).classList.add("selected");
-    
+
     setTimeout(() => {
         createColorElement(color).classList.remove("selected");
 
@@ -73,7 +76,7 @@ let createColorElement = (color) => {
     if (color == 0) {
         return green;
     } else if (color ==1) {
-        return red; 
+        return red;
     } else if (color == 2) {
         return yellow;
     }else if (color == 3) {
@@ -96,9 +99,9 @@ let gameover = () => {
     playgame();
 }
 
-let playgame = () => {
+let playgame = () => {    
     alert("Bem vindo ao Genesis! Iniciando novo jogo!");
-    
+
 
     score = 0;
 
